@@ -1,0 +1,35 @@
+@prefix :        <#> .
+@prefix fuseki:  <http://jena.apache.org/fuseki#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix tdb:     <http://jena.hpl.hp.com/2008/tdb#> .
+@prefix ja:      <http://jena.hpl.hp.com/2005/11/Assembler#> .
+@prefix hdt:      <http://www.rdfhdt.org/fuseki#> .
+
+[] rdf:type fuseki:Server ;
+    ja:loadClass    "org.rdfhdt.hdtjena.HDTGraphAssembler" ;
+    fuseki:services ( <#hdt-service> ) .
+
+# HDT Classes
+hdt:HDTGraph rdfs:subClassOf ja:Graph .
+
+## ---------------------------------------------------------------
+## Create a Read-Only Dataset composed by many RDF Graphs, each from an HDT File.
+
+<#hdt-service> rdf:type fuseki:Service ;
+    fuseki:name                  "dataset" ;
+    fuseki:serviceQuery          "sparql" ;
+    fuseki:serviceReadGraphStore "get" ;
+    fuseki:dataset               <#hdt-dataset> ;
+    .
+
+<#hdt-dataset> rdf:type ja:RDFDataset ;
+    rdfs:label      "HDT Dataset" ;
+    ja:defaultGraph <#hdt-graph> ;
+    .
+
+<#hdt-graph> rdfs:label "Graph from HDT file" ;
+    rdf:type     hdt:HDTGraph ;
+    hdt:fileName "dataset.hdt" ;
+    .
