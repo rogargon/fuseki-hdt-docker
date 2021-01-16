@@ -1,0 +1,9 @@
+version: '3'
+services:
+  fuseki-hdt:
+    build:
+      context: .
+    ports:
+      - "3030:3030"
+    volumes:
+      - "./swdf-2012-11-28.hdt:/opt/fuseki/dataset.hdt:ro"
