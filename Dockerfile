@@ -1,6 +1,7 @@
 FROM openjdk:11
 
-MAINTAINER Roberto García <https://rhizomik.net/~roberto>
+LABEL author="https://orcid.org/0000-0003-2207-9605"
+LABEL contributor="https://orcid.org/0000-0002-0991-5771"
 
 ARG MAVEN_REPO=https://repo1.maven.org/maven2
 ARG FUSEKI_VERSION=4.6.1
