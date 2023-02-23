@@ -1,6 +1,8 @@
 version: '3'
 services:
   fuseki-hdt:
+    environment:
+      - 'JVM_ARGS=-Xmx8G'
     build:
       context: .
     ports:
