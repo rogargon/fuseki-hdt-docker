@@ -24,6 +24,8 @@ Alternatively, you can also use docker-compose:
 version: '3'
 services:
     fuseki-hdt:
+        environment:
+            - 'JVM_ARGS=-Xmx8G'
         image: 'rogargon/fuseki-hdt-docker:latest'
         ports:
             - '3030:3030'

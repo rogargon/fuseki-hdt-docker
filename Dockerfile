@@ -30,4 +30,4 @@ VOLUME /opt/fuseki/
 
 EXPOSE 3030
 
-ENTRYPOINT [ "java", "-cp", "fuseki-server.jar:hdt-api.jar:hdt-java-core.jar:hdt-jena.jar:jlargearrays.jar", "org.apache.jena.fuseki.main.cmds.FusekiMainCmd", "--config=config-hdt.ttl" ]
+ENTRYPOINT java $JVM_ARGS -cp fuseki-server.jar:hdt-api.jar:hdt-java-core.jar:hdt-jena.jar:jlargearrays.jar org.apache.jena.fuseki.main.cmds.FusekiMainCmd --config=config-hdt.ttl
